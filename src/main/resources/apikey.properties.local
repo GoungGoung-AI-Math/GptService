@@ -1,0 +1,2 @@
+# apikey.properties에 openai의 apikey를 작성
+openai.api-key={apikey}

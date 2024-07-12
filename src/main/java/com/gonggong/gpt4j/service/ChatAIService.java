@@ -39,7 +39,7 @@ public class ChatAIService {
 
 
     private static String getPromptMessageJson(PromptMessage prompt) {
-        java.lang.String promptMessage;
+        String promptMessage;
         try{
             promptMessage = prompt.toJson();
         } catch (JsonProcessingException e){

@@ -21,12 +21,12 @@ public class ChatCompleteClient{
 
     private final ApiKey API_KEY;
 
-    private final java.lang.String CHAT_COMPLETE_URL= "https://api.openai.com/v1/chat/completions";
+    private final String CHAT_COMPLETE_URL= "https://api.openai.com/v1/chat/completions";
 
     public String sendPostRequest(String jsonRequest){
         StringBuilder response = new StringBuilder();
         try {
-            HttpURLConnection connection = getHttpURLConnection(jsonRequest);
+            HttpURLConnection connection = ClientConnection.getHttpURLConnection(jsonRequest, CHAT_COMPLETE_URL, API_KEY);
 
             // Read response
             BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
@@ -51,28 +51,5 @@ public class ChatCompleteClient{
         }
 
         return completeChatResponse.getChoices().get(0).getMessage().getValue();
-    }
-
-    private HttpURLConnection getHttpURLConnection( java.lang.String json) throws IOException {
-        URL url = new URL(CHAT_COMPLETE_URL);
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-
-        // Set request method
-        connection.setRequestMethod("POST");
-
-        // Set headers
-        connection.setRequestProperty("Authorization", "Bearer " + API_KEY);
-        connection.setRequestProperty("Content-Type", "application/json");
-
-        // Enable input and output streams
-        connection.setDoOutput(true);
-        connection.setDoInput(true);
-
-        // Write JSON data to request body
-        OutputStream os = connection.getOutputStream();
-        os.write(json.getBytes());
-        os.flush();
-        os.close();
-        return connection;
     }
 }

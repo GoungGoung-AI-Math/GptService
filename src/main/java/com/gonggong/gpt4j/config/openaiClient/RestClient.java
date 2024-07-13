@@ -5,15 +5,12 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gonggong.gpt4j.config.ApiKey;
 import com.gonggong.gpt4j.templete.consts.AIServicePath;
-import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
-import java.util.Collections;
 
 public class RestClient <T, E>{
     public T postWithBody(E body, AIServicePath path, ApiKey apiKey, Class<T> responseType) throws JsonProcessingException {

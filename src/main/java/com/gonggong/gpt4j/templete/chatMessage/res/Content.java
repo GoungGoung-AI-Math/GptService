@@ -11,7 +11,7 @@ public class Content {
     private Integer index;
     private TextMessage message;
     @JsonProperty("finish_reason")
-    private CompleteChatResponse finishReason;
+    private String finishReason;
 
     @Override
     public String toString(){

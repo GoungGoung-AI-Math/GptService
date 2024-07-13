@@ -14,10 +14,9 @@ import org.springframework.stereotype.Service;
 public class EmbeddingAIService {
     private final EmbeddingClient embeddingClient;
 
-    public String embeddingSimpleText(){
-        String text = "대한민국의 22대 국회의장 이름은 우원식이다.";
+    public String embeddingSimpleText(String text){
         EmbeddingMessage embeddingMessage = new EmbeddingMessage(text);
-        EmbeddingResponse response = embeddingClient.sendPostRequest(getEmbeddingMessageJson(embeddingMessage));
+        EmbeddingResponse response = embeddingClient.sendPostRequest(embeddingMessage);
         log.info(response.toString());
         return response.toString();
     }

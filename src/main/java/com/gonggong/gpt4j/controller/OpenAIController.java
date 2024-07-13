@@ -4,11 +4,14 @@ import com.gonggong.gpt4j.dto.ChatReqDto;
 import com.gonggong.gpt4j.dto.VisionReqDto;
 import com.gonggong.gpt4j.service.ChatAIService;
 import com.gonggong.gpt4j.service.EmbeddingAIService;
+import com.gonggong.gpt4j.templete.chatMessage.res.Content;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -25,20 +28,25 @@ public class OpenAIController {
     }
 
     @PostMapping("/vision")
-    public String getVision(@RequestBody VisionReqDto chatReqDto){
+    public List<Content> getVision(@RequestBody VisionReqDto chatReqDto){
         log.info(chatReqDto.toString());
         return chatAIService.visionComplete(chatReqDto);
     }
 
     @PostMapping("/math-teacher")
-    public String getMathQuery(@RequestBody VisionReqDto chatReqDto){
+    public List<Content> getMathQuery(@RequestBody VisionReqDto chatReqDto){
         log.info(chatReqDto.toString());
         return chatAIService.visionMathQuery(chatReqDto);
     }
 
     @PostMapping("/simpleEmbedding")
-    public String getSimpleEmbedding(){
-        return embeddingAIService.embeddingSimpleText();
+    public String getSimpleEmbedding(@RequestBody ChatReqDto chatReqDto){
+        return embeddingAIService.embeddingSimpleText(chatReqDto.getMessage());
+    }
+
+    @PostMapping("/embeddingSearch")
+    public String getEmbeddingSimilarityText(@RequestBody ChatReqDto chatReqDto){
+        return embeddingAIService.embeddingSimpleText(chatReqDto.getMessage());
     }
 
 //    @PostMapping("/pdf-embedding")

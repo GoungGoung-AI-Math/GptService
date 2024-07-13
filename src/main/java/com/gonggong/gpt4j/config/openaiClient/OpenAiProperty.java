@@ -1,5 +1,6 @@
-package com.gonggong.gpt4j.openaiClient;
+package com.gonggong.gpt4j.config.openaiClient;
 
+import com.gonggong.gpt4j.config.ApiKey;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -18,7 +19,7 @@ public class OpenAiProperty {
 
     @Bean
     public ApiKey getApiKey(){
-        System.out.println(" key : "+apiKey);
+//        System.out.println(" key : "+apiKey);
         return ()-> apiKey;
     }
 }

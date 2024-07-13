@@ -1,7 +1,7 @@
 package com.gonggong.gpt4j.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.gonggong.gpt4j.openaiClient.EmbeddingClient;
+import com.gonggong.gpt4j.config.openaiClient.EmbeddingClient;
 import com.gonggong.gpt4j.templete.embeddingMessage.req.EmbeddingMessage;
 import com.gonggong.gpt4j.templete.embeddingMessage.res.EmbeddingResponse;
 import lombok.RequiredArgsConstructor;

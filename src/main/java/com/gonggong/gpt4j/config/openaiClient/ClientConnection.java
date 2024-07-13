@@ -1,4 +1,6 @@
-package com.gonggong.gpt4j.openaiClient;
+package com.gonggong.gpt4j.config.openaiClient;
+
+import com.gonggong.gpt4j.config.ApiKey;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -8,6 +10,8 @@ import java.net.URL;
 public class ClientConnection {
 
     public static HttpURLConnection getHttpURLConnection(String json, String clientUrl, ApiKey apiKey) throws IOException {
+
+
         URL url = new URL(clientUrl);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 

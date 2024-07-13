@@ -1,6 +1,7 @@
-package com.gonggong.gpt4j.openaiClient;
+package com.gonggong.gpt4j.config.openaiClient;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.gonggong.gpt4j.config.ApiKey;
 import com.gonggong.gpt4j.templete.embeddingMessage.res.EmbeddingResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

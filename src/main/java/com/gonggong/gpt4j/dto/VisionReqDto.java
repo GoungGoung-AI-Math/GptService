@@ -1,6 +1,6 @@
 package com.gonggong.gpt4j.dto;
 
-import com.gonggong.gpt4j.templete.promptMessage.ReqContent;
+import com.gonggong.gpt4j.templete.chatMessage.req.ReqContent;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

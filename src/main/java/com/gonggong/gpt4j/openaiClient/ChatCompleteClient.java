@@ -1,17 +1,14 @@
 package com.gonggong.gpt4j.openaiClient;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.gonggong.gpt4j.templete.chatMessage.CompleteChatResponse;
+import com.gonggong.gpt4j.templete.chatMessage.res.CompleteChatResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.URL;
 
 
 @Slf4j

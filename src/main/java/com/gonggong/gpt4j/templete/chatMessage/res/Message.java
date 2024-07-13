@@ -1,4 +1,4 @@
-package com.gonggong.gpt4j.templete.chatMessage;
+package com.gonggong.gpt4j.templete.chatMessage.res;
 
 import com.gonggong.gpt4j.templete.consts.Role;
 

@@ -1,7 +1,8 @@
-package com.gonggong.gpt4j.templete.chatMessage;
+package com.gonggong.gpt4j.templete.chatMessage.res;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.gonggong.gpt4j.templete.consts.Usage;
 import lombok.Getter;
 
 import java.util.List;
@@ -10,18 +11,18 @@ import java.util.List;
 @Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CompleteChatResponse {
-    private java.lang.String id;
-    private java.lang.String object;
+    private String id;
+    private String object;
     private Long created;
-    private java.lang.String model;
+    private String model;
     private List<Content> choices;
     private Usage usage;
 
     @JsonProperty("system_fingerprint")
-    private java.lang.String systemFingerprint;
+    private String systemFingerprint;
 
     @Override
-    public java.lang.String toString(){
+    public String toString(){
         StringBuilder sb =  new StringBuilder()
                 .append("{\n")
                 .append("id : ").append(id).append(",\n")

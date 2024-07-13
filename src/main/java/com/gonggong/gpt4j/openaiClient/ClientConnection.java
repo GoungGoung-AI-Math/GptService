@@ -1,8 +1,5 @@
 package com.gonggong.gpt4j.openaiClient;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
-
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
@@ -18,7 +15,7 @@ public class ClientConnection {
         connection.setRequestMethod("POST");
 
         // Set headers
-        connection.setRequestProperty("Authorization", "Bearer " + apiKey);
+        connection.setRequestProperty("Authorization", "Bearer " + apiKey.getApiKey());
         connection.setRequestProperty("Content-Type", "application/json");
 
         // Enable input and output streams

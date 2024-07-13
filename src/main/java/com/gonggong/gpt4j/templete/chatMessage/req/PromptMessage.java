@@ -1,4 +1,4 @@
-package com.gonggong.gpt4j.templete.promptMessage;
+package com.gonggong.gpt4j.templete.chatMessage.req;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;

@@ -1,4 +1,4 @@
-package com.gonggong.gpt4j.templete.chatMessage;
+package com.gonggong.gpt4j.templete.chatMessage.res;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;

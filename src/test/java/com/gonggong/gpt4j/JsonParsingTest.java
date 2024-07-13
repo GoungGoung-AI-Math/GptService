@@ -1,7 +1,7 @@
 package com.gonggong.gpt4j;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.gonggong.gpt4j.templete.chatMessage.CompleteChatResponse;
+import com.gonggong.gpt4j.templete.chatMessage.res.CompleteChatResponse;
 import org.junit.jupiter.api.Test;
 
 public class JsonParsingTest {

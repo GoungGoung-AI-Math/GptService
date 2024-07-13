@@ -1,8 +1,8 @@
-package com.gonggong.gpt4j.templete.mathteacher;
+package com.gonggong.gpt4j.templete.teachers;
 
 import com.gonggong.gpt4j.templete.consts.Role;
-import com.gonggong.gpt4j.templete.promptMessage.ReqMessage;
-import com.gonggong.gpt4j.templete.promptMessage.ReqTextContent;
+import com.gonggong.gpt4j.templete.chatMessage.req.ReqMessage;
+import com.gonggong.gpt4j.templete.chatMessage.req.ReqTextContent;
 
 import java.util.List;
 

@@ -25,6 +25,8 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
 //    어노테이션 주입하는 의존성
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+//    elastic search
+//    implementation 'org.springframework.data:spring-data-elasticsearch'
 }
 
 tasks.named('test') {

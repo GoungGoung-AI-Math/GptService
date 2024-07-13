@@ -1,5 +1,7 @@
 package com.gonggong.gpt4j.openaiClient;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.gonggong.gpt4j.templete.embeddingMessage.res.EmbeddingResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -16,7 +18,7 @@ public class EmbeddingClient{
     private final ApiKey API_KEY;
     private final String TEXT_EMBEDDING_URL= "https://api.openai.com/v1/embeddings";
 
-    public String sendPostRequest(String json) {
+    public EmbeddingResponse sendPostRequest(String json) {
 
         StringBuilder response = new StringBuilder();
         try {
@@ -34,8 +36,16 @@ public class EmbeddingClient{
             log.error(e.getMessage(), e);
         }
 
+        ObjectMapper objectMapper = new ObjectMapper();
 
-
-        return null;
+        try {
+            EmbeddingResponse embeddingResponse = objectMapper.readValue(response.toString(), EmbeddingResponse.class);
+            log.info(embeddingResponse.toString());
+            return embeddingResponse;
+            // 필요한 다른 로직 추가
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            throw new RuntimeException(e.getMessage(), e);
+        }
     }
 }

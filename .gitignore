@@ -38,3 +38,4 @@ out/
 
 ### API Properties ###
 src/main/resources/apikey.properties
+src/main/resources/elasticsearch.properties

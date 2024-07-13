@@ -1,4 +1,4 @@
-package com.gonggong.gpt4j.templete.promptMessage;
+package com.gonggong.gpt4j.templete.chatMessage.req;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;

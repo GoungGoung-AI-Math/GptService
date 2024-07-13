@@ -4,8 +4,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.gonggong.gpt4j.consts.OpenAIModel;
 import com.gonggong.gpt4j.dto.VisionReqDto;
 import com.gonggong.gpt4j.openaiClient.ChatCompleteClient;
-import com.gonggong.gpt4j.templete.mathteacher.MathTeacherMessage;
-import com.gonggong.gpt4j.templete.promptMessage.PromptMessage;
+import com.gonggong.gpt4j.templete.teachers.MathTeacherMessage;
+import com.gonggong.gpt4j.templete.chatMessage.req.PromptMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -36,7 +36,6 @@ public class ChatAIService {
         String promptMessage = getPromptMessageJson(prompt);
         return chatCompleteClient.sendPostRequest(promptMessage);
     }
-
 
     private static String getPromptMessageJson(PromptMessage prompt) {
         String promptMessage;

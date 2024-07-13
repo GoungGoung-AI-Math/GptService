@@ -1,9 +1,7 @@
 package com.gonggong.gpt4j.openaiClient;
 
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +12,7 @@ import org.springframework.context.annotation.PropertySource;
 @Configuration
 @ConfigurationProperties(prefix = "openai")
 @PropertySource("classpath:/apikey.properties")
-public class AIConfigProperties {
+public class OpenAiProperty {
 
     private String apiKey;
 

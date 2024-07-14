@@ -1,10 +1,12 @@
 package com.gonggong.gpt4j.controller;
 
 import com.gonggong.gpt4j.dto.ChatReqDto;
+import com.gonggong.gpt4j.dto.PdfFileURLDto;
 import com.gonggong.gpt4j.dto.VisionReqDto;
 import com.gonggong.gpt4j.service.ChatAIService;
 import com.gonggong.gpt4j.service.EmbeddingAIService;
 import com.gonggong.gpt4j.templete.chatMessage.res.Content;
+import com.gonggong.gpt4j.templete.embeddingMessage.res.EmbeddingResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -49,9 +51,8 @@ public class OpenAIController {
         return embeddingAIService.embeddingSimpleText(chatReqDto.getMessage());
     }
 
-//    @PostMapping("/pdf-embedding")
-//    public String savePdfEmbedding(@RequestBody PdfFileURLDto pdfFileURLDto){
-//        chatAIService.savePdf2Embedding(pdfFileURLDto);
-//        return null;
-//    }
+    @PostMapping("/pdf-embedding")
+    public List<EmbeddingResponse> savePdfEmbedding(@RequestBody PdfFileURLDto pdfFileURLDto){
+        return embeddingAIService.getEmbeddingObjectFromS3(pdfFileURLDto);
+    }
 }

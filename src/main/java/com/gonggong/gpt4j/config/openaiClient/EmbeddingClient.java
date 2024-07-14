@@ -28,7 +28,6 @@ public class EmbeddingClient{
             RestTemplateClient<EmbeddingResponse, EmbeddingMessage> restTemplateClient = new RestTemplateClient<>();
             EmbeddingResponse response = restTemplateClient.postWithBody(jsonRequest,
                     AIServicePath.EMBEDDING_PATH, API_KEY, EmbeddingResponse.class);
-            log.info("response : {}",response);
             return response;
         }
         catch (Exception e) {

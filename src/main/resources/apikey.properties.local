@@ -1,2 +1,8 @@
 # apikey.properties에 openai의 apikey를 작성
 openai.api-key={apikey}
+
+# S3
+s3.region={ap-지역}
+s3.bucket-name={버킷이름}
+s3.access-key={액세스키}
+s3.secret-key={시크릿키}

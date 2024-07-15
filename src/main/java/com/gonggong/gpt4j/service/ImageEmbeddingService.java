@@ -22,7 +22,7 @@ public class ImageEmbeddingService {
     private final EmbeddingClient embeddingClient;
     private final ChatCompleteClient chatCompleteClient;
     private final ImageCaptionRepository imageCaptionRepository;
-    private Content getImageCaption(VisionReqDto reqDto){
+    public Content getImageCaption(VisionReqDto reqDto){
         PromptMessage prompt = new PromptMessage(reqDto, 250);
         prompt.setSystemPrompt(new ImageCaptionMessage());
         return chatCompleteClient.sendPostRequest(prompt).get(0);
@@ -40,5 +40,4 @@ public class ImageEmbeddingService {
         imageCaptionRepository.save(ImageCaption.toEntity(imageCaptionVo));
         return imageCaptionVo;
     }
-
 }

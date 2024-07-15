@@ -20,7 +20,15 @@ public class Document {
         this.text = text;
         this.metadata = new HashMap<>();
     }
-
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Document{name='").append(name).append('\'');
+        sb.append(", text='").append(text).append('\'');
+        sb.append(", metadata=").append(metadata);
+        sb.append('}');
+        return sb.toString();
+    }
     public void setMetadata(String key, String value) {
         this.metadata.put(key, value);
     }

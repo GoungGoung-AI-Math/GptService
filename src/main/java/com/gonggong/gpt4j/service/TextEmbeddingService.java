@@ -12,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 @Slf4j
 @Service
@@ -29,15 +30,20 @@ public class TextEmbeddingService {
 
     public List<EmbeddingResponse> getEmbeddingObjectFromS3(PdfFileURLDto pdfFileURLDto){
         byte[] fileData = s3Service.getFileBytes(pdfFileURLDto.getUrl());
-        List<Document> documents = s3Service.loadDocuments(fileData, pdfFileURLDto.getPdfName());
-        List<Document> splitDocuments = s3Service.splitDocuments(documents, 500, 80);
-        List<EmbeddingMessage> embeddingMessages = splitDocuments.stream()
-                .map(document -> new EmbeddingMessage(document.getText())).toList();
-        return embeddingMessages.parallelStream()
-                .map(embeddingClient::sendPostRequest).toList();
+        Document documents = s3Service.loadDocuments(fileData, pdfFileURLDto.getPdfName());
+        List<Document> splitDocuments = s3Service.splitDocuments(documents);
+        splitDocuments.forEach(
+                doc -> log.info(doc.toString())
+        );
+        s3Service.saveDocuments(splitDocuments,"./pdfs");
+//        List<EmbeddingMessage> embeddingMessages = splitDocuments.stream()
+//                .map(document -> new EmbeddingMessage(document.getText())).toList();
+//        return embeddingMessages.parallelStream()
+//                .map(embeddingClient::sendPostRequest).toList();
+        return null;
     }
 
-    private static String getEmbeddingMessageJson(EmbeddingMessage embeddingMessage){
+     public String getEmbeddingMessageJson(EmbeddingMessage embeddingMessage){
         String message;
         try{
             message = embeddingMessage.toJson();

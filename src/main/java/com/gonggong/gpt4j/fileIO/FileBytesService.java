@@ -2,15 +2,16 @@ package com.gonggong.gpt4j.fileIO;
 
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 public interface FileBytesService {
 
     byte[] getFileBytes(String key);
 
-    List<Document> loadDocuments(byte[] fileData, String fileName);
+    Document loadDocuments(byte[] fileData, String fileName);
 
-    List<Document> splitDocuments(List<Document> documents);
-    List<Document> splitDocuments(List<Document> documents, int chunkSize, int chunkOverlap);
+    List<Document> splitDocuments(Document document);
 
+    void saveDocuments(List<Document> documents, String outputDirectory);
 }
 

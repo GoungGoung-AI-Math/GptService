@@ -1,7 +1,10 @@
 package com.gonggong.gpt4j.service;
 
-import com.gonggong.gpt4j.clients.openaiClient.ChatCompleteClient;
-import com.gonggong.gpt4j.clients.openaiClient.EmbeddingClient;
+import com.gonggong.gpt4j.pgvectorClient.Document;
+import com.gonggong.gpt4j.pgvectorClient.DocumentRepository;
+import com.gonggong.gpt4j.pgvectorClient.DocumentVo;
+import com.gonggong.gpt4j.templete.openaiClient.ChatCompleteClient;
+import com.gonggong.gpt4j.templete.openaiClient.EmbeddingClient;
 import com.gonggong.gpt4j.dto.VisionReqDto;
 import com.gonggong.gpt4j.templete.chatMessage.req.PromptMessage;
 import com.gonggong.gpt4j.templete.chatMessage.res.Content;
@@ -18,16 +21,24 @@ import org.springframework.stereotype.Service;
 public class ImageEmbeddingService {
     private final EmbeddingClient embeddingClient;
     private final ChatCompleteClient chatCompleteClient;
-    public Content getImageCaption(VisionReqDto reqDto){
+    private final DocumentRepository documentRepository;
+    private Content getImageCaption(VisionReqDto reqDto){
         PromptMessage prompt = new PromptMessage(reqDto, 250);
         prompt.setSystemPrompt(new ImageCaptionMessage());
         return chatCompleteClient.sendPostRequest(prompt).get(0);
     }
 
-    public EmbeddingResponse getCaptionEmbedding(Content content){
+    private EmbeddingResponse getCaptionEmbedding(Content content){
         EmbeddingMessage embeddingMessage = new EmbeddingMessage(content.getMessage().getValue());
-        EmbeddingResponse response = embeddingClient.sendPostRequest(embeddingMessage);
-        return response;
+        return embeddingClient.sendPostRequest(embeddingMessage);
+    }
+
+    public DocumentVo saveImageEmbedding(VisionReqDto reqDto){
+        Content content = getImageCaption(reqDto);
+        EmbeddingResponse embeddingResponse = getCaptionEmbedding(content);
+        DocumentVo documentVo = DocumentVo.of(reqDto, content, embeddingResponse);
+        documentRepository.save(Document.toEntity(documentVo));
+        return documentVo;
     }
 
 }

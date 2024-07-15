@@ -1,6 +1,5 @@
-package com.gonggong.gpt4j.clients.openaiClient;
+package com.gonggong.gpt4j.templete.openaiClient;
 
-import com.gonggong.gpt4j.clients.ApiKey;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;

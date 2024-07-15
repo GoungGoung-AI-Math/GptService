@@ -1,7 +1,7 @@
 package com.gonggong.gpt4j.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.gonggong.gpt4j.clients.openaiClient.EmbeddingClient;
+import com.gonggong.gpt4j.templete.openaiClient.EmbeddingClient;
 import com.gonggong.gpt4j.dto.PdfFileURLDto;
 import com.gonggong.gpt4j.fileIO.Document;
 import com.gonggong.gpt4j.fileIO.FileBytesService;

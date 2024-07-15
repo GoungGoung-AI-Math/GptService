@@ -3,6 +3,7 @@ package com.gonggong.gpt4j.controller;
 import com.gonggong.gpt4j.dto.ChatReqDto;
 import com.gonggong.gpt4j.dto.PdfFileURLDto;
 import com.gonggong.gpt4j.dto.VisionReqDto;
+import com.gonggong.gpt4j.pgvectorClient.DocumentVo;
 import com.gonggong.gpt4j.service.ChatAIService;
 import com.gonggong.gpt4j.service.ImageEmbeddingService;
 import com.gonggong.gpt4j.service.TextEmbeddingService;
@@ -44,8 +45,8 @@ public class OpenAIController {
     }
 
     @PostMapping("/image-caption")
-    public Content getImageCaption(@RequestBody VisionReqDto chatReqDto){
-        return imageEmbeddingService.getImageCaption(chatReqDto);
+    public DocumentVo getImageCaption(@RequestBody VisionReqDto chatReqDto){
+        return imageEmbeddingService.saveImageEmbedding(chatReqDto);
     }
 
     @PostMapping("/simpleEmbedding")

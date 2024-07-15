@@ -17,12 +17,12 @@ public class ReqTextContent extends ReqContent {
     private String text;
 
     @Override
-    MessageType getType() {
+    public MessageType getType() {
         return type;
     }
 
     @Override
-    String getValue() {
+    public String getValue() {
         return text;
     }
 }

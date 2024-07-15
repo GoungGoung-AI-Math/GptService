@@ -23,16 +23,19 @@ dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
-//    어노테이션 주입하는 의존성
+    //    어노테이션 주입하는 의존성
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
-//    elastic search
-//    implementation 'org.springframework.data:spring-data-elasticsearch'
+    //  pgvector
+    implementation group: 'com.pgvector', name: 'pgvector', version: '0.1.5'
     //  AWS S3
     implementation "software.amazon.awssdk:s3:2.13.0"
-
     // Apache PDFBox
     implementation 'org.apache.pdfbox:pdfbox:2.0.24'
-
+    // Hibernate
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    implementation group: 'org.hibernate', name: 'hibernate-vector', version: '6.4.0.Final', ext: 'pom'
 
 }
 

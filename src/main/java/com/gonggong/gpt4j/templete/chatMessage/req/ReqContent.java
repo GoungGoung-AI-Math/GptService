@@ -13,8 +13,8 @@ import com.gonggong.gpt4j.templete.consts.MessageType;
         @JsonSubTypes.Type(value = ReqImageContent.class, name = "image_url")
 })
 public abstract class ReqContent {
-    abstract MessageType getType();
-    abstract String getValue();
+    public abstract MessageType getType();
+    public abstract String getValue();
 
     @Override
     public String toString(){

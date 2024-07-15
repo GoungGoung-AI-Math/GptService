@@ -1,6 +1,5 @@
-package com.gonggong.gpt4j.clients.openaiClient;
+package com.gonggong.gpt4j.templete.openaiClient;
 
-import com.gonggong.gpt4j.clients.ApiKey;
 import com.gonggong.gpt4j.templete.consts.AIServicePath;
 import com.gonggong.gpt4j.templete.embeddingMessage.req.EmbeddingMessage;
 import com.gonggong.gpt4j.templete.embeddingMessage.res.EmbeddingResponse;

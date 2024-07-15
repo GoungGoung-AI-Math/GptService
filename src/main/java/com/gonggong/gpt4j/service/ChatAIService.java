@@ -2,7 +2,7 @@ package com.gonggong.gpt4j.service;
 
 import com.gonggong.gpt4j.consts.OpenAIModel;
 import com.gonggong.gpt4j.dto.VisionReqDto;
-import com.gonggong.gpt4j.clients.openaiClient.ChatCompleteClient;
+import com.gonggong.gpt4j.templete.openaiClient.ChatCompleteClient;
 import com.gonggong.gpt4j.templete.chatMessage.res.Content;
 import com.gonggong.gpt4j.templete.prompts.MathTeacherMessage;
 import com.gonggong.gpt4j.templete.chatMessage.req.PromptMessage;

@@ -17,7 +17,7 @@ public class ReqImageContent extends ReqContent {
     private EncodedImage encodedImage;
 
     @Override
-    MessageType getType() {
+    public MessageType getType() {
         return type;
     }
 

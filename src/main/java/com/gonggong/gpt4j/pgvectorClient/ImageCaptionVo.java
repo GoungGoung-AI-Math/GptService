@@ -12,13 +12,13 @@ import java.util.List;
 @Getter
 @Builder
 @AllArgsConstructor
-public class DocumentVo {
+public class ImageCaptionVo {
     private String name;
     private String caption;
     private List<Double> embedding;
 
-    public static DocumentVo of(VisionReqDto reqDto, Content content, EmbeddingResponse embeddingResponse){
-        return DocumentVo.builder()
+    public static ImageCaptionVo of(VisionReqDto reqDto, Content content, EmbeddingResponse embeddingResponse){
+        return ImageCaptionVo.builder()
                 .name(reqDto.getContents().get(0).getValue())
                 .caption(content.getMessage().getValue())
                 .embedding(embeddingResponse.getData().get(0).getEmbedding())

@@ -1,8 +1,8 @@
 package com.gonggong.gpt4j.service;
 
-import com.gonggong.gpt4j.pgvectorClient.Document;
-import com.gonggong.gpt4j.pgvectorClient.DocumentRepository;
-import com.gonggong.gpt4j.pgvectorClient.DocumentVo;
+import com.gonggong.gpt4j.pgvectorClient.ImageCaption;
+import com.gonggong.gpt4j.pgvectorClient.ImageCaptionRepository;
+import com.gonggong.gpt4j.pgvectorClient.ImageCaptionVo;
 import com.gonggong.gpt4j.templete.openaiClient.ChatCompleteClient;
 import com.gonggong.gpt4j.templete.openaiClient.EmbeddingClient;
 import com.gonggong.gpt4j.dto.VisionReqDto;
@@ -21,7 +21,7 @@ import org.springframework.stereotype.Service;
 public class ImageEmbeddingService {
     private final EmbeddingClient embeddingClient;
     private final ChatCompleteClient chatCompleteClient;
-    private final DocumentRepository documentRepository;
+    private final ImageCaptionRepository imageCaptionRepository;
     private Content getImageCaption(VisionReqDto reqDto){
         PromptMessage prompt = new PromptMessage(reqDto, 250);
         prompt.setSystemPrompt(new ImageCaptionMessage());
@@ -33,12 +33,12 @@ public class ImageEmbeddingService {
         return embeddingClient.sendPostRequest(embeddingMessage);
     }
 
-    public DocumentVo saveImageEmbedding(VisionReqDto reqDto){
+    public ImageCaptionVo saveImageEmbedding(VisionReqDto reqDto){
         Content content = getImageCaption(reqDto);
         EmbeddingResponse embeddingResponse = getCaptionEmbedding(content);
-        DocumentVo documentVo = DocumentVo.of(reqDto, content, embeddingResponse);
-        documentRepository.save(Document.toEntity(documentVo));
-        return documentVo;
+        ImageCaptionVo imageCaptionVo = ImageCaptionVo.of(reqDto, content, embeddingResponse);
+        imageCaptionRepository.save(ImageCaption.toEntity(imageCaptionVo));
+        return imageCaptionVo;
     }
 
 }

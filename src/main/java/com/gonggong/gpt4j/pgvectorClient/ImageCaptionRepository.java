@@ -9,8 +9,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface DocumentRepository extends JpaRepository<Document, Long> {
+public interface ImageCaptionRepository extends JpaRepository<ImageCaption, Long> {
 
-    @Query(value = "SELECT d FROM Document d ORDER BY cosine_distance(d.embedding, :embedding)")
-    List<Document> findTopNSimilarDocuments(@Param("embedding") Double[] embedding, Pageable pageable);
+    @Query(nativeQuery = true,
+            value = "SELECT * FROM ImageCaption ORDER BY embedding <=> cast(? as vector) LIMIT ?")
+    List<ImageCaption> findTopNSimilarDocuments(Double[] embedding, int size);
 }

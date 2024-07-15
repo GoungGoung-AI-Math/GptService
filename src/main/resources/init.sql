@@ -9,4 +9,11 @@ CREATE TABLE IF NOT EXISTS vector_store (
     embedding vector(1536)
     );
 
+CREATE TABLE IF NOT EXISTS ImageCaption (
+    id uuid DEFAULT uuid_generate_v4() PRIMARY KEY,
+    name TEXT,
+    caption TEXT,
+    embedding vector(1536)
+);
+
 CREATE INDEX ON vector_store USING HNSW (embedding vector_cosine_ops);

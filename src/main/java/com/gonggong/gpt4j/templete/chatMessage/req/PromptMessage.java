@@ -27,6 +27,13 @@ public class PromptMessage {
         messages.add(new ReqMessage(dto));
     }
 
+    public PromptMessage (VisionReqDto dto, int maxTokens){
+        this.model = OpenAIModel.GPT_4O;
+        this.messages = new ArrayList<>();
+        this.maxTokens = maxTokens;
+        messages.add(new ReqMessage(dto));
+    }
+
     public void setSystemPrompt(ReqMessage systemMessage){
         messages.add(systemMessage);
     }

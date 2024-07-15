@@ -1,4 +1,4 @@
-package com.gonggong.gpt4j.templete.teachers;
+package com.gonggong.gpt4j.templete.prompts;
 
 import com.gonggong.gpt4j.templete.consts.Role;
 import com.gonggong.gpt4j.templete.chatMessage.req.ReqMessage;

@@ -4,7 +4,8 @@ import com.gonggong.gpt4j.dto.ChatReqDto;
 import com.gonggong.gpt4j.dto.PdfFileURLDto;
 import com.gonggong.gpt4j.dto.VisionReqDto;
 import com.gonggong.gpt4j.service.ChatAIService;
-import com.gonggong.gpt4j.service.EmbeddingAIService;
+import com.gonggong.gpt4j.service.ImageEmbeddingService;
+import com.gonggong.gpt4j.service.PdfEmbeddingService;
 import com.gonggong.gpt4j.templete.chatMessage.res.Content;
 import com.gonggong.gpt4j.templete.embeddingMessage.res.EmbeddingResponse;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +22,8 @@ import java.util.List;
 public class OpenAIController {
 
     private final ChatAIService chatAIService;
-    private final EmbeddingAIService embeddingAIService;
+    private final PdfEmbeddingService pdfEmbeddingService;
+    private final ImageEmbeddingService imageEmbeddingService;
 
     @PostMapping("/text")
     public String getTextCompletions(@RequestBody ChatReqDto chatReqDto){
@@ -30,29 +32,36 @@ public class OpenAIController {
     }
 
     @PostMapping("/vision")
-    public List<Content> getVision(@RequestBody VisionReqDto chatReqDto){
+    public Content getVision(@RequestBody VisionReqDto chatReqDto){
         log.info(chatReqDto.toString());
         return chatAIService.visionComplete(chatReqDto);
     }
 
     @PostMapping("/math-teacher")
-    public List<Content> getMathQuery(@RequestBody VisionReqDto chatReqDto){
+    public Content getMathQuery(@RequestBody VisionReqDto chatReqDto){
         log.info(chatReqDto.toString());
         return chatAIService.visionMathQuery(chatReqDto);
     }
 
+    @PostMapping("/image-caption")
+    public Content getImageCaption(@RequestBody VisionReqDto chatReqDto){
+        return imageEmbeddingService.getImageCaption(chatReqDto);
+    }
+
     @PostMapping("/simpleEmbedding")
     public String getSimpleEmbedding(@RequestBody ChatReqDto chatReqDto){
-        return embeddingAIService.embeddingSimpleText(chatReqDto.getMessage());
+        return pdfEmbeddingService.embeddingSimpleText(chatReqDto.getMessage());
     }
 
     @PostMapping("/embeddingSearch")
     public String getEmbeddingSimilarityText(@RequestBody ChatReqDto chatReqDto){
-        return embeddingAIService.embeddingSimpleText(chatReqDto.getMessage());
+        return pdfEmbeddingService.embeddingSimpleText(chatReqDto.getMessage());
     }
 
     @PostMapping("/pdf-embedding")
     public List<EmbeddingResponse> savePdfEmbedding(@RequestBody PdfFileURLDto pdfFileURLDto){
-        return embeddingAIService.getEmbeddingObjectFromS3(pdfFileURLDto);
+        return pdfEmbeddingService.getEmbeddingObjectFromS3(pdfFileURLDto);
     }
+
+
 }

@@ -5,7 +5,6 @@ import com.gonggong.gpt4j.config.openaiClient.EmbeddingClient;
 import com.gonggong.gpt4j.dto.PdfFileURLDto;
 import com.gonggong.gpt4j.fileIO.Document;
 import com.gonggong.gpt4j.fileIO.FileBytesService;
-import com.gonggong.gpt4j.fileIO.s3.S3Service;
 import com.gonggong.gpt4j.templete.embeddingMessage.req.EmbeddingMessage;
 import com.gonggong.gpt4j.templete.embeddingMessage.res.EmbeddingResponse;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +16,7 @@ import java.util.List;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class EmbeddingAIService {
+public class PdfEmbeddingService {
     private final EmbeddingClient embeddingClient;
     private final FileBytesService s3Service;
 
@@ -31,7 +30,7 @@ public class EmbeddingAIService {
     public List<EmbeddingResponse> getEmbeddingObjectFromS3(PdfFileURLDto pdfFileURLDto){
         byte[] fileData = s3Service.getFileBytes(pdfFileURLDto.getUrl());
         List<Document> documents = s3Service.loadDocuments(fileData, pdfFileURLDto.getPdfName());
-        List<Document> splitDocuments = s3Service.splitDocuments(documents);
+        List<Document> splitDocuments = s3Service.splitDocuments(documents, 500, 80);
         List<EmbeddingMessage> embeddingMessages = splitDocuments.stream()
                 .map(document -> new EmbeddingMessage(document.getText())).toList();
         return embeddingMessages.parallelStream()

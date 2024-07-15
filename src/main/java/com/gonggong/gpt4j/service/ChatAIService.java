@@ -1,11 +1,10 @@
 package com.gonggong.gpt4j.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.gonggong.gpt4j.consts.OpenAIModel;
 import com.gonggong.gpt4j.dto.VisionReqDto;
 import com.gonggong.gpt4j.config.openaiClient.ChatCompleteClient;
 import com.gonggong.gpt4j.templete.chatMessage.res.Content;
-import com.gonggong.gpt4j.templete.teachers.MathTeacherMessage;
+import com.gonggong.gpt4j.templete.prompts.MathTeacherMessage;
 import com.gonggong.gpt4j.templete.chatMessage.req.PromptMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,19 +24,19 @@ public class ChatAIService {
         return chatCompleteClient.sendPostRequest(body);
     }
 
-    public List<Content>visionComplete(VisionReqDto chatReqDto) {
+    public Content visionComplete(VisionReqDto chatReqDto) {
         PromptMessage prompt = new PromptMessage(chatReqDto);
         log.info(prompt.toString());
 //        String promptMessage = getPromptMessageJson(prompt);
-        return chatCompleteClient.sendPostRequest(prompt);
+        return chatCompleteClient.sendPostRequest(prompt).get(0);
     }
 
-    public List<Content> visionMathQuery(VisionReqDto chatReqDto) {
+    public Content visionMathQuery(VisionReqDto chatReqDto) {
         PromptMessage prompt = new PromptMessage(chatReqDto);
         prompt.setSystemPrompt(new MathTeacherMessage());
         log.info(prompt.toString());
 //        String promptMessage = getPromptMessageJson(prompt);
-        return chatCompleteClient.sendPostRequest(prompt);
+        return chatCompleteClient.sendPostRequest(prompt).get(0);
     }
 
 //    private static String getPromptMessageJson(PromptMessage prompt) {

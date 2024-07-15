@@ -7,19 +7,21 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
+import java.util.List;
+
 @Getter
 @Builder
 @AllArgsConstructor
 public class DocumentVo {
     private String name;
     private String caption;
-    private Double[] embedding;
+    private List<Double> embedding;
 
     public static DocumentVo of(VisionReqDto reqDto, Content content, EmbeddingResponse embeddingResponse){
         return DocumentVo.builder()
                 .name(reqDto.getContents().get(0).getValue())
                 .caption(content.getMessage().getValue())
-                .embedding((Double[]) embeddingResponse.getData().toArray())
+                .embedding(embeddingResponse.getData().get(0).getEmbedding())
                 .build();
     }
 }

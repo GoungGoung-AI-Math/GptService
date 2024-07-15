@@ -8,6 +8,8 @@ import org.hibernate.annotations.Array;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
+import java.util.List;
+
 @Entity
 @Table(name = "document")
 @NoArgsConstructor
@@ -28,7 +30,7 @@ public class Document {
     @Column
     @JdbcTypeCode(SqlTypes.VECTOR)
     @Array(length = 1536)
-    private Double[] embedding;
+    private List<Double> embedding;
 
     public static Document toEntity(DocumentVo documentVo){
         return Document.builder()

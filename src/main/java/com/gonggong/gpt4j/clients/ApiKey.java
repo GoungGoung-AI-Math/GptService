@@ -1,4 +1,4 @@
-package com.gonggong.gpt4j.config;
+package com.gonggong.gpt4j.clients;
 
 @FunctionalInterface
 public interface ApiKey {

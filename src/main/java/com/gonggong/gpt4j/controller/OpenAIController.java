@@ -5,7 +5,7 @@ import com.gonggong.gpt4j.dto.PdfFileURLDto;
 import com.gonggong.gpt4j.dto.VisionReqDto;
 import com.gonggong.gpt4j.service.ChatAIService;
 import com.gonggong.gpt4j.service.ImageEmbeddingService;
-import com.gonggong.gpt4j.service.PdfEmbeddingService;
+import com.gonggong.gpt4j.service.TextEmbeddingService;
 import com.gonggong.gpt4j.templete.chatMessage.res.Content;
 import com.gonggong.gpt4j.templete.embeddingMessage.res.EmbeddingResponse;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +22,7 @@ import java.util.List;
 public class OpenAIController {
 
     private final ChatAIService chatAIService;
-    private final PdfEmbeddingService pdfEmbeddingService;
+    private final TextEmbeddingService textEmbeddingService;
     private final ImageEmbeddingService imageEmbeddingService;
 
     @PostMapping("/text")
@@ -49,18 +49,18 @@ public class OpenAIController {
     }
 
     @PostMapping("/simpleEmbedding")
-    public String getSimpleEmbedding(@RequestBody ChatReqDto chatReqDto){
-        return pdfEmbeddingService.embeddingSimpleText(chatReqDto.getMessage());
+    public EmbeddingResponse getSimpleEmbedding(@RequestBody ChatReqDto chatReqDto){
+        return textEmbeddingService.embeddingSimpleText(chatReqDto.getMessage());
     }
 
     @PostMapping("/embeddingSearch")
-    public String getEmbeddingSimilarityText(@RequestBody ChatReqDto chatReqDto){
-        return pdfEmbeddingService.embeddingSimpleText(chatReqDto.getMessage());
+    public EmbeddingResponse getEmbeddingSimilarityText(@RequestBody ChatReqDto chatReqDto){
+        return textEmbeddingService.embeddingSimpleText(chatReqDto.getMessage());
     }
 
     @PostMapping("/pdf-embedding")
     public List<EmbeddingResponse> savePdfEmbedding(@RequestBody PdfFileURLDto pdfFileURLDto){
-        return pdfEmbeddingService.getEmbeddingObjectFromS3(pdfFileURLDto);
+        return textEmbeddingService.getEmbeddingObjectFromS3(pdfFileURLDto);
     }
 
 

@@ -2,15 +2,13 @@ package com.gonggong.gpt4j.service;
 
 import com.gonggong.gpt4j.consts.OpenAIModel;
 import com.gonggong.gpt4j.dto.VisionReqDto;
-import com.gonggong.gpt4j.config.openaiClient.ChatCompleteClient;
+import com.gonggong.gpt4j.clients.openaiClient.ChatCompleteClient;
 import com.gonggong.gpt4j.templete.chatMessage.res.Content;
 import com.gonggong.gpt4j.templete.prompts.MathTeacherMessage;
 import com.gonggong.gpt4j.templete.chatMessage.req.PromptMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Slf4j
 @Service

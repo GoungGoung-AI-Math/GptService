@@ -1,10 +1,16 @@
 version: '3.8'
 
 services:
-  elasticsearch:
-    image: elasticsearch:7.6.2
-    container_name: es762
-    environment:
-      - discovery.type=single-node
-    ports:
-      - "9200:9200"
+    pgvector:
+      hostname: db
+      image: ankane/pgvector
+      ports:
+        - 5432:5432
+      restart: always
+      environment:
+        - POSTGRES_DB=vectordb
+        - POSTGRES_USER=testuser
+        - POSTGRES_PASSWORD=testpwd
+        - POSTGRES_HOST_AUTH_METHOD=trust
+      volumes:
+        - ./init.sql:/docker-entrypoint-initdb.d/init.sql

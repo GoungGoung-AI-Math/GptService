@@ -1,9 +1,9 @@
-package com.gonggong.gpt4j.config.openaiClient;
+package com.gonggong.gpt4j.clients.openaiClient;
 
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.gonggong.gpt4j.config.ApiKey;
+import com.gonggong.gpt4j.clients.ApiKey;
 import com.gonggong.gpt4j.templete.consts.AIServicePath;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;

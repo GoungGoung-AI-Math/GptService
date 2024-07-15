@@ -1,4 +1,4 @@
-package com.gonggong.gpt4j.config.elasticClient;
+package com.gonggong.gpt4j.clients.elasticClient;
 
 import lombok.Getter;
 import lombok.Setter;

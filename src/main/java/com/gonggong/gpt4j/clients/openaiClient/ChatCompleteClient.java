@@ -1,6 +1,6 @@
-package com.gonggong.gpt4j.config.openaiClient;
+package com.gonggong.gpt4j.clients.openaiClient;
 
-import com.gonggong.gpt4j.config.ApiKey;
+import com.gonggong.gpt4j.clients.ApiKey;
 import com.gonggong.gpt4j.templete.chatMessage.req.PromptMessage;
 import com.gonggong.gpt4j.templete.chatMessage.res.CompleteChatResponse;
 import com.gonggong.gpt4j.templete.chatMessage.res.Content;

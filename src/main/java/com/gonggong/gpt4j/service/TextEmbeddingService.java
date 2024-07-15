@@ -1,7 +1,7 @@
 package com.gonggong.gpt4j.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.gonggong.gpt4j.config.openaiClient.EmbeddingClient;
+import com.gonggong.gpt4j.clients.openaiClient.EmbeddingClient;
 import com.gonggong.gpt4j.dto.PdfFileURLDto;
 import com.gonggong.gpt4j.fileIO.Document;
 import com.gonggong.gpt4j.fileIO.FileBytesService;
@@ -16,15 +16,15 @@ import java.util.List;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class PdfEmbeddingService {
+public class TextEmbeddingService {
     private final EmbeddingClient embeddingClient;
     private final FileBytesService s3Service;
 
-    public String embeddingSimpleText(String text){
+    public EmbeddingResponse embeddingSimpleText(String text){
         EmbeddingMessage embeddingMessage = new EmbeddingMessage(text);
         EmbeddingResponse response = embeddingClient.sendPostRequest(embeddingMessage);
         log.info(response.toString());
-        return response.toString();
+        return response;
     }
 
     public List<EmbeddingResponse> getEmbeddingObjectFromS3(PdfFileURLDto pdfFileURLDto){

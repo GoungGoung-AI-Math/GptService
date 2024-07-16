@@ -1,4 +1,4 @@
-package com.gonggong.gpt4j.domain.openai.gptClient;
+package com.gonggong.gpt4j.domain.gptClient;
 
 
 import com.fasterxml.jackson.core.JsonProcessingException;

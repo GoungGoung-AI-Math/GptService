@@ -4,8 +4,8 @@ import com.gonggong.gpt4j.domain.chat.req.PromptMessage;
 import com.gonggong.gpt4j.domain.chat.res.CompleteChatResponse;
 import com.gonggong.gpt4j.domain.chat.res.Content;
 import com.gonggong.gpt4j.consts.AIServicePath;
-import com.gonggong.gpt4j.domain.openai.gptClient.ApiKey;
-import com.gonggong.gpt4j.domain.openai.gptClient.RestTemplateClient;
+import com.gonggong.gpt4j.domain.gptClient.ApiKey;
+import com.gonggong.gpt4j.domain.gptClient.RestTemplateClient;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -16,7 +16,7 @@ import java.util.List;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class ChatCompleteClient{
+public class ChatCompleteTemplate {
 
     private final ApiKey API_KEY;
 

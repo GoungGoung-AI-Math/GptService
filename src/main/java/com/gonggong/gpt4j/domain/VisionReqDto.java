@@ -14,14 +14,6 @@ import java.util.List;
 public class VisionReqDto {
     private List<ReqContent> contents;
 
-//    public VisionReqDto(MessageType type, String content){
-//        this.contents = new ArrayList<>();
-//        if(MessageType.TEXT.equals(type)){
-//            this.contents.add(new ReqTextContent(content));
-//        } else{
-//            this.contents.add(new ReqImageContent(new EncodedImage(content)));
-//        }
-//    }
     @Override
     public String toString(){
         StringBuilder sb = new StringBuilder();

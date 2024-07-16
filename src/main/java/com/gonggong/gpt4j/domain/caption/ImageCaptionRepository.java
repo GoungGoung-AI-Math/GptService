@@ -1,5 +1,6 @@
 package com.gonggong.gpt4j.domain.caption;
 
+import com.gonggong.gpt4j.domain.caption.data.ImageCaption;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

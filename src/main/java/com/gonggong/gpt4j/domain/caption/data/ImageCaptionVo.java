@@ -1,4 +1,4 @@
-package com.gonggong.gpt4j.domain.caption;
+package com.gonggong.gpt4j.domain.caption.data;
 
 import com.gonggong.gpt4j.domain.VisionReqDto;
 import com.gonggong.gpt4j.domain.chat.res.Content;
@@ -7,7 +7,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
-import java.awt.*;
 import java.util.List;
 
 @Getter

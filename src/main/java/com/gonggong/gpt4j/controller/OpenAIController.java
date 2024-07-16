@@ -1,6 +1,6 @@
 package com.gonggong.gpt4j.controller;
 
-import com.gonggong.gpt4j.domain.caption.ImageCaptionDto;
+import com.gonggong.gpt4j.domain.caption.data.ImageCaptionDto;
 import com.gonggong.gpt4j.domain.chat.ChatReqDto;
 import com.gonggong.gpt4j.domain.embedding.PdfFileURLDto;
 import com.gonggong.gpt4j.domain.VisionReqDto;

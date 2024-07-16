@@ -1,4 +1,4 @@
-package com.gonggong.gpt4j.domain.caption;
+package com.gonggong.gpt4j.domain.caption.data;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

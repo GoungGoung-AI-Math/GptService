@@ -15,12 +15,12 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class TextEmbeddingService {
-    private final EmbeddingClient embeddingClient;
+    private final EmbeddingTemplate embeddingTemplate;
     private final FileBytesService s3Service;
 
     public EmbeddingResponse embeddingSimpleText(String text){
         EmbeddingMessage embeddingMessage = new EmbeddingMessage(text);
-        EmbeddingResponse response = embeddingClient.sendPostRequest(embeddingMessage);
+        EmbeddingResponse response = embeddingTemplate.sendPostRequest(embeddingMessage);
         log.info(response.toString());
         return response;
     }

@@ -1,4 +1,4 @@
-package com.gonggong.gpt4j.domain.caption;
+package com.gonggong.gpt4j.domain.caption.data;
 
 
 import io.hypersistence.utils.hibernate.type.json.JsonType;

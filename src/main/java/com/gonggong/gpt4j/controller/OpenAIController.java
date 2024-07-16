@@ -10,8 +10,10 @@ import com.gonggong.gpt4j.domain.caption.ImageCaptionService;
 import com.gonggong.gpt4j.domain.embedding.TextEmbeddingService;
 import com.gonggong.gpt4j.domain.chat.res.Content;
 import com.gonggong.gpt4j.domain.embedding.res.EmbeddingResponse;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -65,7 +67,12 @@ public class OpenAIController {
         return textEmbeddingService.getEmbeddingObjectFromS3(pdfFileURLDto);
     }
 
-    @PostMapping("/near-problems")
+    @PostMapping("/image-captions")
+    public List<ImageCaptionDto> saveImageEmbeddings(@RequestBody VisionReqDto reqDto){
+        return imageCaptionService.saveImageEmbeddings(reqDto);
+    }
+
+    @GetMapping("/near-problems")
     public List<ImageCaptionDto> getNearestProblems(@RequestBody VisionReqDto reqDto){
         return imageCaptionService.getNearestCaptions(reqDto);
     }

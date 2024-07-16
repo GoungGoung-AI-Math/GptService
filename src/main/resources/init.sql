@@ -15,5 +15,5 @@ CREATE TABLE IF NOT EXISTS ImageCaption (
     caption TEXT,
     embedding vector(1536)
 );
-
+CREATE INDEX ON imagecaption USING HNSW (embedding vector_cosine_ops);
 CREATE INDEX ON vector_store USING HNSW (embedding vector_cosine_ops);

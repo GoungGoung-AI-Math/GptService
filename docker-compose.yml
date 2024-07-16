@@ -13,4 +13,4 @@ services:
         - POSTGRES_PASSWORD=testpwd
         - POSTGRES_HOST_AUTH_METHOD=trust
       volumes:
-        - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+        - /db:/var/lib/postgresql

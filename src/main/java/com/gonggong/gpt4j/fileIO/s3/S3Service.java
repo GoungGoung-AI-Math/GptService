@@ -2,9 +2,9 @@ package com.gonggong.gpt4j.fileIO.s3;
 
 import com.gonggong.gpt4j.fileIO.Document;
 import com.gonggong.gpt4j.fileIO.FileBytesService;
-import com.gonggong.gpt4j.fileIO.s3.dto.AccessKey;
-import com.gonggong.gpt4j.fileIO.s3.dto.BucketName;
-import com.gonggong.gpt4j.fileIO.s3.dto.SecretKey;
+import com.gonggong.gpt4j.fileIO.s3.property.AccessKey;
+import com.gonggong.gpt4j.fileIO.s3.property.BucketName;
+import com.gonggong.gpt4j.fileIO.s3.property.SecretKey;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
@@ -18,7 +18,6 @@ import software.amazon.awssdk.services.s3.model.S3Exception;
 import org.apache.pdfbox.pdmodel.*;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;

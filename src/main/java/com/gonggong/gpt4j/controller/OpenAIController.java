@@ -1,14 +1,15 @@
 package com.gonggong.gpt4j.controller;
 
-import com.gonggong.gpt4j.dto.ChatReqDto;
-import com.gonggong.gpt4j.dto.PdfFileURLDto;
-import com.gonggong.gpt4j.dto.VisionReqDto;
-import com.gonggong.gpt4j.pgvectorClient.ImageCaptionVo;
-import com.gonggong.gpt4j.service.ChatAIService;
-import com.gonggong.gpt4j.service.ImageEmbeddingService;
-import com.gonggong.gpt4j.service.TextEmbeddingService;
-import com.gonggong.gpt4j.templete.chatMessage.res.Content;
-import com.gonggong.gpt4j.templete.embeddingMessage.res.EmbeddingResponse;
+import com.gonggong.gpt4j.domain.caption.ImageCaptionDto;
+import com.gonggong.gpt4j.domain.chat.ChatReqDto;
+import com.gonggong.gpt4j.domain.embedding.PdfFileURLDto;
+import com.gonggong.gpt4j.domain.VisionReqDto;
+
+import com.gonggong.gpt4j.domain.chat.ChatAIService;
+import com.gonggong.gpt4j.domain.caption.ImageCaptionService;
+import com.gonggong.gpt4j.domain.embedding.TextEmbeddingService;
+import com.gonggong.gpt4j.domain.chat.res.Content;
+import com.gonggong.gpt4j.domain.embedding.res.EmbeddingResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +25,7 @@ public class OpenAIController {
 
     private final ChatAIService chatAIService;
     private final TextEmbeddingService textEmbeddingService;
-    private final ImageEmbeddingService imageEmbeddingService;
+    private final ImageCaptionService imageCaptionService;
 
     @PostMapping("/text")
     public String getTextCompletions(@RequestBody ChatReqDto chatReqDto){
@@ -45,8 +46,8 @@ public class OpenAIController {
     }
 
     @PostMapping("/image-caption")
-    public ImageCaptionVo getImageCaption(@RequestBody VisionReqDto chatReqDto){
-        return imageEmbeddingService.saveImageEmbedding(chatReqDto);
+    public ImageCaptionDto getImageCaption(@RequestBody VisionReqDto chatReqDto){
+        return imageCaptionService.saveImageEmbedding(chatReqDto);
     }
 
     @PostMapping("/simpleEmbedding")
@@ -62,6 +63,11 @@ public class OpenAIController {
     @PostMapping("/pdf-embedding")
     public List<EmbeddingResponse> savePdfEmbedding(@RequestBody PdfFileURLDto pdfFileURLDto){
         return textEmbeddingService.getEmbeddingObjectFromS3(pdfFileURLDto);
+    }
+
+    @PostMapping("/near-problems")
+    public List<ImageCaptionDto> getNearestProblems(@RequestBody VisionReqDto reqDto){
+        return imageCaptionService.getNearestCaptions(reqDto);
     }
 
 

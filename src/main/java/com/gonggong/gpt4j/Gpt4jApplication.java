@@ -1,6 +1,6 @@
 package com.gonggong.gpt4j;
 
-import com.gonggong.gpt4j.templete.openaiClient.OpenAiProperty;
+import com.gonggong.gpt4j.domain.openai.gptClient.OpenAiProperty;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

@@ -1,8 +1,8 @@
 package com.gonggong.gpt4j.fileIO.s3;
 
-import com.gonggong.gpt4j.fileIO.s3.dto.AccessKey;
-import com.gonggong.gpt4j.fileIO.s3.dto.BucketName;
-import com.gonggong.gpt4j.fileIO.s3.dto.SecretKey;
+import com.gonggong.gpt4j.fileIO.s3.property.AccessKey;
+import com.gonggong.gpt4j.fileIO.s3.property.BucketName;
+import com.gonggong.gpt4j.fileIO.s3.property.SecretKey;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;

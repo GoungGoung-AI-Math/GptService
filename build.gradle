@@ -2,6 +2,8 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.3.1'
     id 'io.spring.dependency-management' version '1.1.5'
+    // Avro
+    id 'com.github.davidmc24.gradle.plugin.avro-base'  version '1.0.0'
 }
 
 group = 'com.gonggong'
@@ -15,6 +17,9 @@ java {
 
 repositories {
     mavenCentral()
+    maven {
+        url "https://packages.confluent.io/maven"
+    }
 }
 
 dependencies {
@@ -25,6 +30,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     //    어노테이션 주입하는 의존성
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+    implementation "javax.annotation:javax.annotation-api:1.3.2"
     //  pgvector
     implementation group: 'com.pgvector', name: 'pgvector', version: '0.1.5'
     //  AWS S3
@@ -38,11 +44,25 @@ dependencies {
 
     // pgvector 의존성
     implementation group: 'org.hibernate', name: 'hibernate-vector', version: '6.4.0.Final', ext: 'pom'
-    // https://mvnrepository.com/artifact/io.hypersistence/hypersistence-utils-hibernate-62
     implementation group: 'io.hypersistence', name: 'hypersistence-utils-hibernate-62', version: '3.8.1'
+
+    // Kafka
+    implementation 'org.springframework.kafka:spring-kafka'
+    // Avro
+    implementation group: 'org.apache.avro', name: 'avro', version: '1.11.3'
+    implementation group: 'io.confluent', name: 'kafka-avro-serializer', version: '6.1.0'
+    implementation group: 'io.confluent', name: 'kafka-streams-avro-serde', version: '7.6.0'
 
 }
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+// avro build
+def generateAvro = tasks.register("generateAvro", com.github.davidmc24.gradle.plugin.avro.GenerateAvroJavaTask) {
+    source("src/main/java/com/example/demo/my/kafka/infra/avro")
+    outputDir = file("src/main/java/com/example/demo/my/kafka/infra/avrobuild")
+    fieldVisibility = "PRIVATE"
+    enableDecimalLogicalType = true
 }

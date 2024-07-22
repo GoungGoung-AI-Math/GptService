@@ -1,11 +1,11 @@
 package com.gonggong.gpt4j.domain.attempt.publisher.kafka;
 
 import com.example.demo.my.kafka.infra.avrobuild.AttemptAnalysisResponseAvroModel;
+import com.example.demo.my.kafka.infra.kafka.mapper.AttemptAnalysisDataMapper;
 import com.example.demo.my.kafka.infra.kafka.producer.KafkaProducer;
 import com.gonggong.gpt4j.Gpt4jServiceConfigData;
-import com.gonggong.gpt4j.domain.attempt.mapper.AttemptAnalysisDataMapper;
 import com.example.demo.my.kafka.infra.kafka.publisher.kafka.DomainEventPublisher;
-import com.gonggong.gpt4j.domain.attempt.event.AttemptAnalysisEvent;
+import com.gonggong.gpt4j.domain.attempt.event.AttemptAnalysisResponseEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -13,15 +13,15 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class AttemptAnalysisResponsePublisher implements DomainEventPublisher<AttemptAnalysisEvent> {
+public class AttemptAnalysisResponsePublisher implements DomainEventPublisher<AttemptAnalysisResponseEvent> {
     private final AttemptAnalysisDataMapper attemptAnalysisDataMapper;
     private final KafkaProducer<String, AttemptAnalysisResponseAvroModel> kafkaProducer;
     private final Gpt4jServiceConfigData gpt4jServiceConfigData;
 
     @Override
-    public void publish(AttemptAnalysisEvent domainEvent) {
+    public void publish(AttemptAnalysisResponseEvent domainEvent) {
         Long attemptId = domainEvent.getAttemptAnalysisDto().getAttemptId();
-        log.info("Received AttemptAnalysisEvent for attempt id: {}", attemptId);
+        log.info("Received AttemptAnalysisResponseEvent for attempt id: {}", attemptId);
         try {
             AttemptAnalysisResponseAvroModel attemptAnalysisResponseAvroModel =
                     attemptAnalysisDataMapper

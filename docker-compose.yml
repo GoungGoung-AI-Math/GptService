@@ -13,4 +13,4 @@ services:
         - POSTGRES_PASSWORD=testpwd
         - POSTGRES_HOST_AUTH_METHOD=trust
       volumes:
-        - /db:/var/lib/postgresql
+        - ./db:/var/lib/postgresql

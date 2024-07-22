@@ -13,7 +13,7 @@ import lombok.Getter;
 @Builder
 @AllArgsConstructor
 @JsonNaming(value = PropertyNamingStrategies.SnakeCaseStrategy.class)
-public abstract class AttemptAnalysisDto{
+public class AttemptAnalysisDto{
     private Long attemptId;
     private AnalysisType analysisType;
     private MessageType messageType;

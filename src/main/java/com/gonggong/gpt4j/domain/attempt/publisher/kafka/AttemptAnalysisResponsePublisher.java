@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class AttemptAnalysisResponsePublisher implements DomainEventPublisher<AttemptAnalysisEvent> {
     private final AttemptAnalysisDataMapper attemptAnalysisDataMapper;
-    private final KafkaProducer<Long, AttemptAnalysisResponseAvroModel> kafkaProducer;
+    private final KafkaProducer<String, AttemptAnalysisResponseAvroModel> kafkaProducer;
     private final Gpt4jServiceConfigData gpt4jServiceConfigData;
     private final KafkaMessageHelper kafkaMessageHelper;
 
@@ -30,16 +30,17 @@ public class AttemptAnalysisResponsePublisher implements DomainEventPublisher<At
                             .attemptAnalysisResponseToAvroModel(domainEvent.getAttemptAnalysisDto());
 
             kafkaProducer.send(gpt4jServiceConfigData.getAttemptAnalysisResponseTopicName(),
-                    attemptId,
+                    String.valueOf(attemptId),
                     attemptAnalysisResponseAvroModel,
                     kafkaMessageHelper.getKafkaCallback(gpt4jServiceConfigData
                                     .getAttemptAnalysisResponseTopicName(),
                             attemptAnalysisResponseAvroModel,
-                            attemptId,
+                            String.valueOf(attemptId),
                             "RestaurantApprovalResponseAvroModel"));
 
             log.info("AttemptAnalysisResponseAvroModel sent to kafka at: {}", System.nanoTime());
         } catch (Exception e) {
+            e.printStackTrace();
             log.error("Error while sending AttemptAnalysisResponseAvroModel message" +
                     " to kafka with order id: {}, error: {}", attemptId, e.getMessage());
         }

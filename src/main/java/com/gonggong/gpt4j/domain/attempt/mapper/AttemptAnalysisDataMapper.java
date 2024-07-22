@@ -17,8 +17,9 @@ public class AttemptAnalysisDataMapper {
                         attemptAnalysisDto.getAnalysisType().name()
                 ))
                 .setMessageType(MessageType.valueOf(
-                        attemptAnalysisDto.getContent()
+                        attemptAnalysisDto.getMessageType().name()
                 ))
+                .setContent(attemptAnalysisDto.getContent())
                 .build();
     }
 
@@ -29,8 +30,9 @@ public class AttemptAnalysisDataMapper {
                         attemptAnalysisDto.getAnalysisType().name()
                 ))
                 .setMessageType(MessageType.valueOf(
-                        attemptAnalysisDto.getContent()
+                        attemptAnalysisDto.getMessageType().name()
                 ))
+                .setContent(attemptAnalysisDto.getContent())
                 .build();
     }
 

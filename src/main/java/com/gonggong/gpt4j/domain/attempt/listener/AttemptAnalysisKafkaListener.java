@@ -1,10 +1,10 @@
 package com.gonggong.gpt4j.domain.attempt.listener;
 
 import com.example.demo.my.kafka.infra.avrobuild.AttemptAnalysisRequestAvroModel;
-import com.example.demo.my.kafka.infra.avrobuild.AttemptAnalysisResponseAvroModel;
+import com.example.demo.my.kafka.infra.kafka.dtos.attempt.analysis.AttemptAnalysisRequestDto;
 import com.example.demo.my.kafka.infra.kafka.listener.kafka.KafkaConsumer;
-import com.gonggong.gpt4j.domain.attempt.event.AttemptAnalysisDto;
-import com.gonggong.gpt4j.domain.attempt.mapper.AttemptAnalysisDataMapper;
+
+import com.example.demo.my.kafka.infra.kafka.mapper.AttemptAnalysisDataMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -35,7 +35,7 @@ class AttemptAnalysisKafkaListener implements KafkaConsumer<AttemptAnalysisReque
                 offsets.toString());
 
         messages.forEach(avroModel -> {
-            AttemptAnalysisDto dto = attemptAnalysisDataMapper.avroModelToAttemptAnalysisDto(avroModel);
+            AttemptAnalysisRequestDto dto = attemptAnalysisDataMapper.avroModelToAttemptAnalysisRequestDto(avroModel);
             log.info("Processing successful analysis for attempt id: {} type : {}", dto.getAttemptId(), dto.getMessageType());
         });
     }

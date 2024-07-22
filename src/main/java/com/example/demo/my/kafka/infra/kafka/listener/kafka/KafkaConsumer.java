@@ -1,4 +1,4 @@
-package com.gonggong.gpt4j.kafka.listener;
+package com.example.demo.my.kafka.infra.kafka.listener.kafka;
 
 import org.apache.avro.specific.SpecificRecordBase;
 

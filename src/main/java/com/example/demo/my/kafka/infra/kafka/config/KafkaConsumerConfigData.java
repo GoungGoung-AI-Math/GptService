@@ -1,4 +1,4 @@
-package com.gonggong.gpt4j.kafka.config;
+package com.example.demo.my.kafka.infra.kafka.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

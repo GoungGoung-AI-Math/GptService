@@ -1,4 +1,4 @@
-package com.gonggong.gpt4j.kafka.producer;
+package com.example.demo.my.kafka.infra.kafka.producer;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.producer.RecordMetadata;
@@ -10,9 +10,9 @@ import org.springframework.util.concurrent.ListenableFutureCallback;
 @Component
 public class KafkaMessageHelper {
 
-    public <T> ListenableFutureCallback<SendResult<String, T>>
-    getKafkaCallback(String responseTopicName, T avroModel, String orderId, String avroModelName) {
-        return new ListenableFutureCallback<SendResult<String, T>>() {
+    public <T> ListenableFutureCallback<SendResult<Long, T>>
+    getKafkaCallback(String responseTopicName, T avroModel, Long id, String avroModelName) {
+        return new ListenableFutureCallback<SendResult<Long, T>>() {
             @Override
             public void onFailure(Throwable ex) {
                 log.error("Error while sending " + avroModelName +
@@ -20,11 +20,11 @@ public class KafkaMessageHelper {
             }
 
             @Override
-            public void onSuccess(SendResult<String, T> result) {
+            public void onSuccess(SendResult<Long, T> result) {
                 RecordMetadata metadata = result.getRecordMetadata();
                 log.info("Received successful response from Kafka for order id: {}" +
                                 " Topic: {} Partition: {} Offset: {} Timestamp: {}",
-                        orderId,
+                        id,
                         metadata.topic(),
                         metadata.partition(),
                         metadata.offset(),

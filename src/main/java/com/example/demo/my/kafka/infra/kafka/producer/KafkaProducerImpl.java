@@ -1,6 +1,6 @@
-package com.gonggong.gpt4j.kafka.producer;
+package com.example.demo.my.kafka.infra.kafka.producer;
 
-import com.gonggong.gpt4j.kafka.producer.exception.KafkaProducerException;
+import com.example.demo.my.kafka.infra.kafka.producer.exception.KafkaProducerException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.avro.specific.SpecificRecordBase;
 import org.springframework.kafka.KafkaException;

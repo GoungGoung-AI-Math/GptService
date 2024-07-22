@@ -1,4 +1,4 @@
-package com.gonggong.gpt4j.kafka.producer.exception;
+package com.example.demo.my.kafka.infra.kafka.producer.exception;
 
 public class KafkaProducerException extends RuntimeException {
 

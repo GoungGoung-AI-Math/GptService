@@ -45,4 +45,14 @@ public class AttemptAnalysisDataMapper {
                 .content(avroModel.getContent())
                 .build();
     }
+
+    public AttemptAnalysisDto avroModelToAttemptAnalysisDto(AttemptAnalysisRequestAvroModel avroModel){
+        return AttemptAnalysisDto.builder()
+                .attemptId(avroModel.getAttemptId())
+                .analysisType(AnalysisType.valueOf(avroModel.getAnalysisType().name()))
+                .messageType(
+                        com.gonggong.gpt4j.consts.MessageType.valueOf(avroModel.getMessageType().name()))
+                .content(avroModel.getContent())
+                .build();
+    }
 }

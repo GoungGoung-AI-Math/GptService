@@ -35,15 +35,15 @@ public class AttemptAnalysisService {
     }
 
     public VisionReqDto mapRequestToDto(AttemptAnalysisRequestDto dto) {
-        List<ReqContent> reqContents = dto.getContent().stream()
+        List<ReqContent> reqContents = dto.getContents().stream()
                 .map(content -> {
                     // `messageType`에 따라 적절한 `ReqContent` 타입을 선택합니다.
-                    if (dto.getMessageType() == MessageType.TEXT) {
-                        return new ReqTextContent(content);
-                    } else if (dto.getMessageType() == MessageType.IMAGE_URL) {
-                        return new ReqImageContent(new EncodedImage(content));
+                    if (content.getMessageType() == MessageType.TEXT) {
+                        return new ReqTextContent(content.getContent());
+                    } else if (content.getMessageType() == MessageType.IMAGE_URL) {
+                        return new ReqImageContent(new EncodedImage(content.getContent()));
                     } else {
-                        throw new IllegalArgumentException("Unsupported message type: " + dto.getMessageType());
+                        throw new IllegalArgumentException("Unsupported message type: " + content.getMessageType());
                     }
                 })
                 .collect(Collectors.toList());

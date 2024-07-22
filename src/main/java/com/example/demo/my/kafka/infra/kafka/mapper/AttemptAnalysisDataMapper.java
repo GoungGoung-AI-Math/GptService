@@ -46,16 +46,10 @@ public class AttemptAnalysisDataMapper {
         return AttemptAnalysisRequestDto.builder()
                 .attemptId(avroModel.getAttemptId())
                 .analysisType(com.example.demo.my.kafka.infra.kafka.dtos.AnalysisType.valueOf(avroModel.getAnalysisType().name()))
-<<<<<<< HEAD
-                .messageType(
-                        com.example.demo.my.kafka.infra.kafka.dtos.MessageType.valueOf(avroModel.getMessageType().name()))
-                .content(avroModel.getContent())
-=======
                 .contents(avroModel.getContents().stream().map(c-> ContentDto.builder()
                         .messageType(com.example.demo.my.kafka.infra.kafka.dtos.MessageType.valueOf(c.getMessageType().name()))
                         .content(c.getContent())
                         .build()).collect(Collectors.toList()))
->>>>>>> ab9cc7432fba2338e384aab91c284881d7d9f08f
                 .build();
     }
 

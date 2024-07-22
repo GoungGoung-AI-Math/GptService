@@ -1,7 +1,6 @@
 package com.gonggong.gpt4j.domain.attempt.publisher.kafka;
 
 import com.example.demo.my.kafka.infra.avrobuild.AttemptAnalysisResponseAvroModel;
-import com.example.demo.my.kafka.infra.kafka.producer.KafkaMessageHelper;
 import com.example.demo.my.kafka.infra.kafka.producer.KafkaProducer;
 import com.gonggong.gpt4j.Gpt4jServiceConfigData;
 import com.gonggong.gpt4j.domain.attempt.mapper.AttemptAnalysisDataMapper;
@@ -18,7 +17,6 @@ public class AttemptAnalysisResponsePublisher implements DomainEventPublisher<At
     private final AttemptAnalysisDataMapper attemptAnalysisDataMapper;
     private final KafkaProducer<String, AttemptAnalysisResponseAvroModel> kafkaProducer;
     private final Gpt4jServiceConfigData gpt4jServiceConfigData;
-    private final KafkaMessageHelper kafkaMessageHelper;
 
     @Override
     public void publish(AttemptAnalysisEvent domainEvent) {
@@ -31,12 +29,12 @@ public class AttemptAnalysisResponsePublisher implements DomainEventPublisher<At
 
             kafkaProducer.send(gpt4jServiceConfigData.getAttemptAnalysisResponseTopicName(),
                     String.valueOf(attemptId),
-                    attemptAnalysisResponseAvroModel,
-                    kafkaMessageHelper.getKafkaCallback(gpt4jServiceConfigData
-                                    .getAttemptAnalysisResponseTopicName(),
-                            attemptAnalysisResponseAvroModel,
-                            String.valueOf(attemptId),
-                            "RestaurantApprovalResponseAvroModel"));
+                    attemptAnalysisResponseAvroModel);
+//                    kafkaMessageHelper.getKafkaCallback(gpt4jServiceConfigData
+//                                    .getAttemptAnalysisResponseTopicName(),
+//                            attemptAnalysisResponseAvroModel,
+//                            String.valueOf(attemptId),
+//                            "RestaurantApprovalResponseAvroModel")
 
             log.info("AttemptAnalysisResponseAvroModel sent to kafka at: {}", System.nanoTime());
         } catch (Exception e) {

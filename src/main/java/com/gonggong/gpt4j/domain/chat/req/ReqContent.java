@@ -1,8 +1,8 @@
 package com.gonggong.gpt4j.domain.chat.req;
 
+import com.example.demo.my.kafka.infra.kafka.dtos.MessageType;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.gonggong.gpt4j.consts.MessageType;
 
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,

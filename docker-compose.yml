@@ -1,16 +1,42 @@
 version: '3.8'
 
 services:
-    pgvector:
-      hostname: db
-      image: ankane/pgvector
-      ports:
-        - 5432:5432
-      restart: always
-      environment:
-        - POSTGRES_DB=vectordb
-        - POSTGRES_USER=testuser
-        - POSTGRES_PASSWORD=testpwd
-        - POSTGRES_HOST_AUTH_METHOD=trust
-      volumes:
-        - ./db:/var/lib/postgresql
+  pgvector:
+    container_name: gpt-vector-db
+    hostname: gpt-vector-db
+    image: ankane/pgvector
+    ports:
+      - 5432:5432
+    restart: always
+    environment:
+      - POSTGRES_DB=vectordb
+      - POSTGRES_USER=testuser
+      - POSTGRES_PASSWORD=testpwd
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    volumes:
+      - ./db:/var/lib/postgresql
+    networks:
+      - network
+
+  gpt4j:
+    hostname: spring-gpt4j
+    container_name: spring-gpt4j
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment: #환경 설정(database연결 및 profile 지정)
+      SPRING_DATASOURCE_URL: jdbc:postgresql://gpt-vector-db:5432/vectordb
+      SPRING_DATASOURCE_USERNAME: testuser
+      SPRING_DATASOURCE_PASSWORD: testpwd
+    ports:
+      - "8083:8080"
+    depends_on:
+      pgvector:
+        condition: service_started
+    networks:
+      - network
+
+networks:
+  network:
+    name: docker-compose_gonggong-ai-network
+    external: true

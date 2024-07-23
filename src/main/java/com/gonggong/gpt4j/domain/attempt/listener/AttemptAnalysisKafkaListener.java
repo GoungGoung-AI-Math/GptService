@@ -29,7 +29,7 @@ class AttemptAnalysisKafkaListener implements KafkaConsumer<AttemptAnalysisReque
     public void receive(@Payload List<AttemptAnalysisRequestAvroModel> messages,
                         @Header(KafkaHeaders.RECEIVED_KEY) List<String> keys,
                         @Header(KafkaHeaders.RECEIVED_PARTITION) List<Integer> partitions,
-                        @Header(KafkaHeaders.OFFSET) List<Long> offsets) {
+                        @Header(KafkaHeaders.OFFSET) List<Long> offsets) { // 좀더
         log.info("{} number of analysis responses received with keys:{}, partitions:{} and offsets: {}",
                 messages.size(),
                 keys.toString(),

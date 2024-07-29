@@ -1,14 +1,13 @@
 package com.gonggong.gpt4j.domain.attempt.event;
 
-import com.example.demo.my.kafka.infra.kafka.dtos.attempt.analysis.AttemptAnalysisRequestDto;
-import com.example.demo.my.kafka.infra.kafka.dtos.attempt.analysis.AttemptAnalysisResponseDto;
-import com.example.demo.my.kafka.infra.kafka.publisher.kafka.DomainEvent;
-import com.example.demo.my.kafka.infra.kafka.publisher.kafka.DomainEventPublisher;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import math.ai.my.kafka.infra.kafka.dtos.attempt.analysis.AttemptAnalysisRequestDto;
+import math.ai.my.kafka.infra.kafka.listener.DomainEvent;
+import math.ai.my.kafka.infra.kafka.listener.DomainEventPublisher;
 
 import java.time.ZonedDateTime;
 import java.util.List;

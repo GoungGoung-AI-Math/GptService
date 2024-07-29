@@ -1,13 +1,12 @@
 package com.gonggong.gpt4j.domain.attempt.listener;
 
-import com.example.demo.my.kafka.infra.avrobuild.AttemptAnalysisRequestAvroModel;
-import com.example.demo.my.kafka.infra.kafka.dtos.attempt.analysis.AttemptAnalysisRequestDto;
-import com.example.demo.my.kafka.infra.kafka.listener.kafka.KafkaConsumer;
-
-import com.example.demo.my.kafka.infra.kafka.mapper.AttemptAnalysisDataMapper;
 import com.gonggong.gpt4j.domain.attempt.AttemptAnalysisService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import math.ai.my.kafka.infra.avrobuild.AttemptAnalysisRequestAvroModel;
+import math.ai.my.kafka.infra.kafka.dtos.attempt.analysis.AttemptAnalysisRequestDto;
+import math.ai.my.kafka.infra.kafka.listener.KafkaConsumer;
+import math.ai.my.kafka.infra.kafka.mapper.AttemptAnalysisDataMapper;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.handler.annotation.Header;

@@ -1,12 +1,12 @@
 package com.gonggong.gpt4j.domain.attempt.controller;
 
-import com.example.demo.my.kafka.infra.kafka.dtos.AnalysisType;
-import com.example.demo.my.kafka.infra.kafka.dtos.MessageType;
-import com.example.demo.my.kafka.infra.kafka.dtos.attempt.analysis.AttemptAnalysisResponseDto;
 import com.gonggong.gpt4j.domain.attempt.event.AttemptAnalysisResponseEvent;
 import com.gonggong.gpt4j.domain.attempt.publisher.kafka.AttemptAnalysisResponsePublisher;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import math.ai.my.kafka.infra.kafka.dtos.AnalysisType;
+import math.ai.my.kafka.infra.kafka.dtos.MessageType;
+import math.ai.my.kafka.infra.kafka.dtos.attempt.analysis.AttemptAnalysisResponseDto;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 

@@ -39,3 +39,4 @@ out/
 ### API Properties ###
 src/main/resources/apikey.properties
 src/main/resources/elasticsearch.properties
+src/main/java/math/ai/my/kafka/infra/avrobuild

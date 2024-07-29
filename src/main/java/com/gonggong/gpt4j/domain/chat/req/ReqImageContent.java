@@ -1,11 +1,11 @@
 package com.gonggong.gpt4j.domain.chat.req;
 
-import com.example.demo.my.kafka.infra.kafka.dtos.MessageType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import math.ai.my.kafka.infra.kafka.dtos.MessageType;
 
 @NoArgsConstructor
 @AllArgsConstructor
